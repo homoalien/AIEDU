@@ -1,0 +1,209 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>contact</title>
+
+    <!-- custom css file link  -->
+    <link rel="stylesheet" href="AIEDU-Online education\css\style.css">
+
+
+</head>
+
+<body>
+
+    <!-- header section starts  -->
+
+    <header class="header">
+
+        <a href="home.html" class="logo"> <i class="fas fa-graduation-cap"></i> AIEDU </a>
+
+        <div id="menu-btn" class="fas fa-bars"></div>
+
+        <nav class="navbar">
+            <ul>
+                <li><a href="home.html">主页</a></li>
+                <li><a href="course-1.html">视频资源</a></li>
+                <li><a href="course-2.html">图书推荐</a></li>
+                
+                <li><a href="about.html">测试</a></li>
+                <li><a href="messageborder.html">互动</a></li>
+                     
+            </ul>
+        </nav>
+
+
+    </header>
+
+    <!-- header section ends -->
+
+    <section class="heading">
+        <h3>测试</h3>
+        <p> <a href="home.html">主页 >></a> 测试 </p>
+    </section>
+
+    <section id="contact">
+
+        <div class="row">
+
+            <div id="bc">
+                <div id="parent-container">
+                    <div id="question">
+                        <h3>问题1:</h3>
+                        <p style="font-weight: bold;"> 以下哪个不是人工智能的关键技术？</p>
+                    </div>
+                </div>
+                <div id="answer">
+                    <label>
+                        <input type="radio" name="option" value="a" class="radio-button"> a) 算法优化
+                    </label><br>
+                    <label>
+                        <input type="radio" name="option" value="b" class="radio-button"> b) 大数据处理
+                    </label><br>
+                    <label>
+                        <input type="radio" name="option" value="c" class="radio-button"> c) 量子纠缠
+                    </label><br>
+                    <label>
+                        <input type="radio" name="option" value="d" class="radio-button"> d) 硬件加速
+                    </label><br>
+                </div>
+                <button id="nextButton" onclick="change()">下一步</button>
+            </div>
+        </div>
+
+
+
+    </section>
+
+
+
+    
+
+    <script>
+        var nextButton = document.getElementById("nextButton");
+        var bc = document.getElementById("bc");
+        var select = false
+
+        function change() {
+            check()
+            if (select) {
+                if (bc.style.width == "40vw") {
+                    bc.style.width = "80vw";
+                    nextButton.style.right = "50%";
+                } else {
+                    bc.style.width = "40vw";
+                    bc.style.height = "71vh";
+                    nextButton.style.right = "10%";
+                }
+                append();
+            }
+
+        }
+        function append() {
+            var newDiv = document.createElement('div');
+            newDiv.id = "bc1";
+            var result = document.createElement('div');
+            var explanation = document.createElement('div');
+            result.id = "result"
+            explanation.id = "explanation"
+
+            var contact = document.getElementById('contact');
+
+            if (bc.style.width == "40vw") {
+                contact.appendChild(newDiv);
+                newDiv.appendChild(result)
+                newDiv.appendChild(explanation)
+                checkAnswer()
+            } else {
+                var bc1 = document.getElementById("bc1")
+                if (bc1) {
+                    contact.removeChild(bc1);
+                    nextQuestion()
+                }
+            }
+
+        }
+        var questions = [
+            {
+                question: "以下哪个不是人工智能的关键技术？",
+                correctAnswer: "c",
+                explanation: '"量子纠缠" 不是人工智能的关键技术。量子纠缠是量子物理学中的一个概念，与量子计算有关。人工智能的关键技术包括算法优化、大数据处理和硬件加速等。'
+            },
+            {
+                question: "在计算机视觉中，图像分类的目的是什么？",
+                correctAnswer: "b",
+                explanation: '图像分类的目的是将图像分配到一个或多个类别中。这通常涉及到识别图像中的对象，并将其分类为预定义的类别，例如识别图像中的人、动物、车辆等。'
+            },
+            {
+                question: "卷积层在卷积神经网络中的作用是什么？",
+                correctAnswer: "b",
+                explanation: '卷积层是卷积神经网络（CNN）的核心组成部分，它们通过滤波器或卷积核来提取图像的局部特征。'
+            },
+            {
+                question: "机器翻译的目的是将一种语言的文本翻译成另一种语言，它主要依赖于哪种技术？",
+                correctAnswer: "c",
+                explanation: '机器翻译是自然语言处理（NLP）的一个应用领域，它使用统计方法或神经网络技术来实现从一种语言到另一种语言的文本翻译。'
+            },
+        ];
+        var answers = [
+            {
+                a: "算法优化",
+                b: "大数据处理",
+                c: "量子纠缠",
+                d: "硬件加速"
+            },
+            {
+                a: "检测图像中的边缘",
+                b: "识别图像中的特定对象",
+                c: "增强图像的对比度",
+                d: "将图像转换为3D模型窑"
+            },
+            {
+                a: "减少特征维度以减少计算量",
+                b: "学习图像中的局部特征",
+                c: "进行全连接的权重更新",
+                d: "将特征映射到更高维度"
+            },
+            {
+                a: "语音识别 ",
+                b: "图像识别 ",
+                c: "统计方法或神经网络",
+                d: "关键词提取"
+            },
+        ];
+        var currentQuestion = 0;
+        function check() {
+            var selectedOption = document.querySelector('input[name="option"]:checked');
+            if (selectedOption) {
+                select = true;
+            } else {
+                select = false;
+                alert("请选择答案")
+            }
+        }
+        function checkAnswer() {
+            var selectedOption = document.querySelector('input[name="option"]:checked');
+            var userAnswer = selectedOption.value;
+            document.getElementById("result").innerHTML = "<p>正确答案是" + questions[currentQuestion].correctAnswer + "</p>";
+            document.getElementById("explanation").innerHTML = "<p>" + questions[currentQuestion].explanation + "</p>";
+        }
+        function nextQuestion() {
+    currentQuestion++;
+    if (currentQuestion < questions.length) {
+        document.getElementById("question").innerHTML = "<h3>问题 " + (currentQuestion + 1) + ":</h3><p>" + questions[currentQuestion].question + "</p>";
+        document.getElementById("answer").innerHTML = '<label><input type="radio" name="option" value="a" class="radio-button"> a) ' + answers[currentQuestion].a + '</label><br><label><input type="radio" name="option" value="b" class="radio-button"> b) ' + answers[currentQuestion].b + '</label><br><label><input type="radio" name="option" value="c" class="radio-button"> c) ' + answers[currentQuestion].c + '</label><br><label><input type="radio" name="option" value="d" class="radio-button"> d) ' + answers[currentQuestion].d + '</label><br>';
+    } else {
+   
+        document.getElementById("question").innerHTML = "<h3>答题结束</h3>";
+        document.getElementById("answer").innerHTML = '<p>感谢您的参与！</p>';
+        nextButton.disabled = true; 
+        nextButton.innerHTML = "结束"; 
+    }
+}
+    </script>
+</body>
+
+</html>

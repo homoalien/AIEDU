@@ -1,0 +1,362 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <link href="https://fonts.googleapis.com/css?family=Oswald&display=swap" rel="stylesheet">
+    
+    
+ <link href="https://fonts.googleapis.com/css?family=Roboto+Condensed:300,300i,400,400i,700i" rel="stylesheet">
+
+    <style>
+    
+        *{
+            margin: 0;
+            padding: 0;
+        }
+.timeline {
+  display: flex;
+  margin: 0 auto;
+  flex-wrap: wrap;
+  flex-direction: column;
+  max-width: 700px;
+  position: relative;
+}
+.timeline__content-title {
+  font-weight: normal;
+  font-size: 66px;
+  margin: -10px 0 0 0;
+  transition: 0.4s;
+  padding: 0 10px;
+  box-sizing: border-box;
+  font-family: 'Oswald', sans-serif;
+  color: #3e9eaa;
+}
+.timeline__content-desc {
+  margin: 0;
+  font-size: 15px;
+  box-sizing: border-box;
+  color: rgba(255, 255, 255, .7);
+  font-family: 'Roboto Condensed', sans-serif;
+  font-weight: normal;
+  line-height: 25px;
+}
+.timeline:before {
+  position: absolute;
+  left: 50%;
+  width: 2px;
+  height: 100%;
+  margin-left: -1px;
+  content: "";
+  background: rgba(255, 255, 255, .07);
+}
+@media only screen and (max-width: 767px) {
+  .timeline:before {
+    left: 40px;
+  }
+}
+.timeline-item {
+  padding: 40px 0;
+  opacity: 0.3;
+  filter: blur(2px);
+  transition: 0.5s;
+  box-sizing: border-box;
+  width: calc(50% - 40px);
+  display: flex;
+  position: relative;
+  transform: translateY(-80px);
+}
+.timeline-item:before {
+  content: attr(data-text);
+  letter-spacing: 3px;
+  width: 100%;
+  position: absolute;
+  color: rgba(255, 255, 255, .5);
+  font-size: 13px;
+  font-family: 'Pathway Gothic One', sans-serif;
+  border-left: 2px solid rgba(255, 255, 255, .5);
+  top: 70%;
+  margin-top: -5px;
+  padding-left: 15px;
+  opacity: 0;
+  right: calc(-100% - 56px);
+}
+.timeline-item:nth-child(even) {
+  align-self: flex-end;
+}
+.timeline-item:nth-child(even):before {
+  right: auto;
+  text-align: right;
+  left: calc(-100% - 56px);
+  padding-left: 0;
+  border-left: none;
+  border-right: 2px solid rgba(255, 255, 255, .5);
+  padding-right: 15px;
+}
+.timeline-item--active {
+  opacity: 1;
+  transform: translateY(0);
+  filter: blur(0px);
+}
+.timeline-item--active:before {
+  top: 50%;
+  transition: 0.3s all 0.2s;
+  opacity: 1;
+}
+.timeline-item--active .timeline__content-title {
+  margin: -50px 0 20px 0;
+}
+@media only screen and (max-width: 767px) {
+  .timeline-item {
+    align-self: baseline !important;
+    width: 100%;
+    padding: 0 30px 150px 80px;
+  }
+  .timeline-item:before {
+    left: 10px !important;
+    padding: 0 !important;
+    top: 50px;
+    text-align: center !important;
+    width: 60px;
+    border: none !important;
+  }
+  .timeline-item:last-child {
+    padding-bottom: 40px;
+  }
+}
+.timeline__img {
+  max-width: 100%;
+  box-shadow: 0 10px 15px rgba(0, 0, 0, .4);
+}
+.timeline-container {
+  width: 100%;
+  position: relative;
+  padding: 80px 0;
+  transition: 0.3s ease 0s;
+  background-attachment: fixed;
+  background-size: cover;
+}
+.timeline-container:before {
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+ background: rgba(0,0,0,0.6);
+  content: "";
+}
+.timeline-header {
+  width: 100%;
+  text-align: center;
+  margin-bottom: 80px;
+  position: relative;
+}
+.timeline-header__title {
+  color: #fff;
+  font-size: 58px;
+  font-family: 'Oswald', sans-serif;
+  font-weight: normal;
+  margin: 0;
+}
+.timeline-header__subtitle {
+  color: rgba(255, 255, 255, .5);
+  font-family: 'Pathway Gothic One', sans-serif;
+  font-size: 16px;
+  letter-spacing: 5px;
+  margin: 10px 0 0 0;
+  font-weight: normal;
+}
+.demo-footer {
+  padding: 60px 0;
+  text-align: center;
+}
+.demo-footer a {
+  color: #999;
+  display: inline-block;
+  font-family: Cardo;
+}
+.top-bar a {
+  position: fixed; 
+  top: 0; 
+  left: 2rem; 
+  z-index: 1000; 
+  
+  padding: 10px; 
+  color: white; 
+  text-decoration: none; 
+  font-weight: bold; 
+  font-size: 30px; 
+}
+
+    </style>
+</head>
+<body>
+ 
+     <div class="timeline-container" id="timeline-1">
+      <div class="top-bar">
+        <a href="computer vision.html">返回</a>
+      </div>
+  <div class="timeline-header">
+    <h2 class="timeline-header__title">计算机视觉发展史📕</h2>
+    <h3 class="timeline-header__subtitle">1950s-2020s</h3>
+  </div>
+  <div class="timeline">
+    <div class="timeline-item" data-text="二维图像的分析和识别">
+      <div class="timeline__content"><img class="timeline__img" src="AIEDU-ComputerV2\images\1.jpg" />
+        <h2 class="timeline__content-title">1950s</h2>
+        <p class="timeline__content-desc">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;1959年，神经生理学家David Hubel和Torsten Wiesel通过猫的视觉实验，
+          首次发现了视觉初级皮层神经元对于移动边缘刺激敏感，发现了视功能柱结构，
+          为视觉神经研究奠定了基础——促成了计算机视觉技术40年后的突破性发展，奠定了深度学习之后的核心准则。</br>
+          &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;1959年，Russell和他的同学研制了一台可以把图片转化为被二进制机器所理解的灰度值的仪器——这是第一台数字图像扫描仪，
+          处理数字图像开始成为可能。这一时期，研究的主要对象如光学字符识别、工件表面、显微图片和航空图片的分析和解释等。
+          </p>
+      </div>
+    </div>
+    <div class="timeline-item" data-text="三维视觉的理解和研究">
+      <div class="timeline__content"><img class="timeline__img" src="AIEDU-ComputerV2\images\2.jpg"/>
+        <h2 class="timeline__content-title">1960s</h2>
+        <p class="timeline__content-desc">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;1965年， Lawrence Roberts《三维固体的机器感知》描述了从二维图片中推导三维信息的过程。
+          ——现代计算机视觉的前导之一，开创了理解三维场景为目的的计算机视觉研究。他对积木世界的创造性研究给人们带来极大的启发，之后人们开始对积木世界进行深入的研究，
+          从边缘的检测、角点特征的提取，到线条、平面、曲线等几何要素分析，到图像明暗、纹理、运动以及成像几何等，并建立了各种数据结构和推理规则。</br>
+          &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;1966， MITAI实验室的Seymour Papert教授决定启动夏季视觉项目，并在几个月内解决机器视觉问题。
+          Seymour和Gerald Sussman协调学生将设计一个可以自动执行背景/前景分割，并从真实世界的图像中提取非重叠物体的平台。——虽然未成功，但是计算机视觉作为一个科学领域的正式诞生的标志。</br>
+          &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;1969年秋天，贝尔实验室的两位科学家Willard S. Boyle和George E. Smith正忙于电荷耦合器件（CCD）的研发。它是一种将光子转化为电脉冲的器件，很快成为了高质量数字图像采集任务的新宠，
+          逐渐应用于工业相机传感器，标志着计算机视觉走上应用舞台，投入到工业机器视觉中。
+         </p>
+      </div>
+    </div>
+    <div class="timeline-item" data-text="计算机视觉系列课程和理论体系的出现">
+      <div class="timeline__content"><img class="timeline__img" src="AIEDU-ComputerV2\images\3.jpg"/>
+        <h2 class="timeline__content-title">1970s</h2>
+        <p class="timeline__content-desc">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;70年代中期，麻省理工学院（MIT）人工智能（AI）实验室：CSAIL正式开设计算机视觉课程。</br>
+          &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;1977年David Marr在MIT的AI实验室提出了，计算机视觉理论（Computational Vision），这是与 Lawrence Roberts当初引领的积木世界分析方法截然不同的理论。</br>
+          &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;计算机视觉理论成为80年代计算机视觉重要理论框架，使计算机视觉有了明确的体系，促进了计算机视觉的发展。
+        </p>
+      </div>
+    </div>
+    <div class="timeline-item" data-text="独立学科的形成">
+      <div class="timeline__content"><img class="timeline__img" src="AIEDU-ComputerV2\images\4.jpg"/>
+        <h2 class="timeline__content-title">1980s</h2>
+        <p class="timeline__content-desc">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;1980年，日本计算机科学家Kunihiko Fukushima在Hubel和Wiesel的研究启发下，建立了一个自组织的简单和复杂细胞的人工网络——Neocognitron，
+          包括几个卷积层（通常是矩形的），他的感受野具有权重向量（称为滤波器）。这些滤波器的功能是在输入值的二维数组（例如图像像素）上滑动，并在执行某些计算后，产生激活事件（2维数组），这些事件将用作网络后续层的输入。
+          Fukushima的Neocognitron可以说是第一个神经网络，是现代 CNN 网络中卷积层+池化层的最初范例及灵感来源。</br>
+          &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;1982年，David Marr发表了有影响的论文-“愿景：对人类表现和视觉信息处理的计算研究”。基于Hubel和Wiesel的想法视觉处理不是从整体对象开始, David介绍了一个视觉框架，其中检测边缘，曲线，角落等的低级算法被用作对视觉数据进行高级理解的铺垫。同年《视觉》（Marr, 1982）一书的问世，标志着计算机视觉成为了一门独立学科。</br>
+          &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;1982年 日本COGEX公司于生产的视觉系统DataMan，是世界第一套工业光学字符识别（OCR）系统。</br>
+          &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;1989年，法国的Yann LeCun将一种后向传播风格学习算法应用于Fukushima的卷积神经网络结构。在完成该项目几年后，LeCun发布了LeNet-5--这是第一个引入今天仍在CNN中使用的一些基本成分的现代网络。现在卷积神经网络已经是图像、语音和手写识别系统中的重要组成部分。
+          </p>
+      </div>
+    </div>
+    <div class="timeline-item" data-text="特征对象识别">
+      <div class="timeline__content"><img class="timeline__img" src="AIEDU-ComputerV2\images\4.jpg"/>
+        <h2 class="timeline__content-title">1990s</h2>
+        <p class="timeline__content-desc">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;1997年，伯克利教授Jitendra Malik（以及他的学生Jianbo Shi）发表了一篇论文，描述了他试图解决感性分组的问题。
+          研究人员试图让机器使用图论算法将图像分割成合理的部分（自动确定图像上的哪些像素属于一起，并将物体与周围环境区分开来）</br>
+          &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;1999年， David Lowe 发表《基于局部尺度不变特征（SIFT特征）的物体识别》，标志着研究人员开始停止通过创建三维模型重建对象，而转向基于特征的对象识别。</br>
+          &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;1999年，Nvidia公司在推销Geforce 256芯片时，提出了GPU概念。GPU是专门为了执行复杂的数学和集合计算而设计的数据处理芯片。
+          伴随着GPU发展应用，游戏行业、图形设计行业、视频行业发展也随之加速，出现了越来越多高画质游戏、高清图像和视频。
+
+          </p>
+      </div>
+    </div>
+    <div class="timeline-item" data-text="图像特征工程和高质量数据集的出现">
+      <div class="timeline__content"><img class="timeline__img" src="AIEDU-ComputerV2\images\5.jpg"/>
+        <h2 class="timeline__content-title">2000s</h2>
+        <p class="timeline__content-desc">
+          &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;2001年，Paul Viola 和Michael Jones推出了第一个实时工作的人脸检测框架。虽然不是基于深度学习，但算法仍然具有深刻的学习风格，因为在处理图像时，
+          通过一些特征可以帮助定位面部。该功能依赖于Viola / Jones算法，五年后，Fujitsu 发布了一款具有实时人脸检测功能的相机。</br>
+          &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;2005年，由Dalal & Triggs提出来方向梯度直方图，HOG（Histogramof Oriented Gradients）应用到行人检测上。是目前计算机视觉、模式识别领域很常用的一种描述图像局部纹理的特征方法。</br>
+          &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;2006年，Lazebnik, Schmid & Ponce提出一种利用空间金字塔即 SPM （Spatial Pyramid Matching）进行图像匹配、识别、分类的算法，是在不同分辨率上统计图像特征点分布，从而获取图像的局部信息。</br>
+          &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;2006年，Pascal VOC项目启动。它提供了用于对象分类的标准化数据集以及用于访问所述数据集和注释的一组工具。创始人在2006年至2012年期间举办了年度竞赛，该竞赛允许评估不同对象类识别方法的表现。检测效果不断提高。</br>
+          &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;2006年左右，Geoffrey Hilton和他的学生发明了用GPU来优化深度神经网络的工程方法，并发表在《Science》和相关期刊上发表了论文，首次提出了“深度信念网络”的概念。他给多层神经网络相关的学习方法赋予了一个新名词–“深度学习”。随后深度学习的研究大放异彩，广泛应用在了图像处理和语音识别领域【3】，他的学生后来赢得了2012年ImageNet大赛，并使CNN家喻户晓。</br>
+          &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;2009年，由Felzenszwalb教授在提出基于HOG的deformable parts model(DPM)，可变形零件模型开发，它是深度学习之前最好的最成功的objectdetection & recognition算法。它最成功的应用就是检测行人，目前DPM已成为众多分类、分割、姿态估计等算法的核心部分，Felzenszwalb本人也因此被VOC授予"终身成就奖"。</p>
+      </div>
+    </div>
+    <div class="timeline-item" data-text="深度学习在视觉中的应用">
+      <div class="timeline__content"><img class="timeline__img" src="AIEDU-ComputerV2\images\6.jpg"/>
+        <h2 class="timeline__content-title">2010s</h2>
+        <p class="timeline__content-desc">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;2009年，李飞飞教授等在CVPR2009上发表了一篇名为《ImageNet: A Large-Scale Hierarchical Image Database》的论文，发布了ImageNet数据集，这是为了检测计算机视觉能否识别自然万物，回归机器学习，克服过拟合问题，经过三年多在筹划组建完成的一个大的数据集。从10年-17年，基于ImageNet数据集共进行了7届ImageNet挑战赛，李飞飞说"ImageNet改变了AI领域人们对数据集的认识，人们真正开始意识到它在研究中的地位，就像算法一样重要"。ImageNet是计算机视觉发展的重要推动者，和深度学习热潮的关键推动者，将目标检测算法推向了新的高度。</br>
+          &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;2012 年，Alex Krizhevsky、Ilya Sutskever 和 Geoffrey Hinton 创造了一个“大型的深度卷积神经网络”，也即现在众所周知的 AlexNet，赢得了当年的 ILSVRC。这是史上第一次有模型在 ImageNet 数据集表现如此出色。论文“ImageNet Classification with Deep Convolutional Networks”，迄今被引用约 7000 次，被业内普遍视为行业最重要的论文之一，真正展示了 CNN 的优点。机器识别的错误率从25%左右。降低了百分之16%左右，跟人类相比差别不大。是自那时起，CNN 才成了家喻户晓的名字。</br>
+         
+          </p>
+</p>
+      </div>
+    </div>
+    <div class="timeline-item" data-text="深度学习在视觉中的应用">
+      <div class="timeline__content"><img class="timeline__img" src="AIEDU-ComputerV2\images\6.jpg"/>
+        <h2 class="timeline__content-title">2010s</h2>
+        <p class="timeline__content-desc">
+          &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;2014年，蒙特利尔大学提出生成对抗网络（GAN）：拥有两个相互竞争的神经网络可以使机器学习得更快。一个网络尝试模仿真实数据生成假的数据，而另一个网络则试图将假数据区分出来。随着时间的推移，两个网络都会得到训练，生成对抗网络（GAN）被认为是计算机视觉领域的重大突破。2017-2018 年深度学习框架的开发发展到了成熟期。PyTorch 和 TensorFlow 已成为首选框架，它们都提供了针对多项任务（包括图像分类）的大量预训练模型。近年来，国内外巨头纷纷布局计算机视觉领域，开设计算机视觉研究实验室。以计算机视觉新系统和技术赋能原有的业务，开拓战场。如Facebook的AI Research（FAIR）在视觉方面2016年声称其DeepFace人脸识别算法有着97.35%的识别准确率，几乎与人类不分上下。</br>
+          &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;2017，Lin, Tsung-Yi等提出特征金字塔网络，可以从深层特征图中捕获到更强的语义信息。同时提出Mask R-CNN，用于图像的实例分割任务，它使用简单、基础的网络设计，不需要多么复杂的训练优化过程及参数设置，就能够实现当前最佳的实例分割效果，并有很高的运行效率。【5】2016，亚马逊收购了一支欧洲顶级计算机视觉团队，为Prime Air无人机加上识别障碍和着陆区域的能力。开发无人机送货。2017年亚马逊网络服务（AWS）宣布对其识别服务进行了一系列更新，为云客户提供基于机器学习的计算机视觉功能。客户将能够在数百万张面孔的集合上进行实时人脸搜索。例如，Rekognition可用于验证一个人的图像与现有数据库中的另一个图像相匹配，数据库高达数千万个图像，具有亚秒级延迟。</br>
+          &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;2018年末，英伟达发布的视频到视频生成（Video-to-Video synthesis），它通过精心设计的发生器、鉴别器网络以及时空对抗物镜，合成高分辨率、照片级真实、时间一致的视频，实现了让AI更具物理意识，更强大，并能够推广到新的和看不见的更多场景。</br>
+          &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;2019， BigGAN，同样是一个GAN，只不过更强大，是拥有了更聪明的课程学习技巧的GAN，由它训练生成的图像连它自己都分辨不出真假，因为除非拿显微镜看，否则将无法判断该图像是否有任何问题，因而，它更被誉为史上最强的图像生成器。</br>
+          &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;2020年，OpenAI发布了GPT-3，这是一个拥有1750亿个参数的语言模型，是目前最大的语言模型，它可以生成高质量的文本，甚至可以用来编写代码，这是一个巨大的突破，也是深度学习的一个重要里程碑。</p>
+      </div>
+    </div>
+    
+    </div>
+  
+  </div>
+</div>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
+ <script>
+    
+    (function($) {
+  $.fn.timeline = function() {
+    var selectors = {
+      id: $(this),
+      item: $(this).find(".timeline-item"),
+      activeClass: "timeline-item--active",
+      img: ".timeline__img"
+    };
+    selectors.item.eq(0).addClass(selectors.activeClass);
+    selectors.id.css(
+      "background-image",
+      "url(" +
+        selectors.item
+          .first()
+          .find(selectors.img)
+          .attr("src") +
+        ")"
+    );
+    var itemLength = selectors.item.length;
+    $(window).scroll(function() {
+      var max, min;
+      var pos = $(this).scrollTop();
+      selectors.item.each(function(i) {
+        min = $(this).offset().top;
+        max = $(this).height() + $(this).offset().top;
+        var that = $(this);
+        if (i == itemLength - 2 && pos > min + $(this).height() / 2) {
+          selectors.item.removeClass(selectors.activeClass);
+          selectors.id.css(
+            "background-image",
+            "url(" +
+              selectors.item
+                .last()
+                .find(selectors.img)
+                .attr("src") +
+              ")"
+          );
+          selectors.item.last().addClass(selectors.activeClass);
+        } else if (pos <= max - 40 && pos >= min) {
+          selectors.id.css(
+            "background-image",
+            "url(" +
+              $(this)
+                .find(selectors.img)
+                .attr("src") +
+              ")"
+          );
+          selectors.item.removeClass(selectors.activeClass);
+          $(this).addClass(selectors.activeClass);
+        }
+      });
+    });
+  };
+})(jQuery);
+
+$("#timeline-1").timeline();
+
+    </script>
+</body>
+</html>

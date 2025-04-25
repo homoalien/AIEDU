@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="zh">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>contact</title>
+    <!-- custom css file link -->
+    <link rel="stylesheet" href="css/style.css">
+    <style>
+        body {
+            background-color: #e4edf6;
+        }
+
+        #container {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            max-width: 700px;
+            margin: auto;
+            position: absolute;
+            padding-top: 5%;
+            padding-left: 30%;
+        }
+
+        #main-img {
+            width: 80%;
+            height: auto;
+            width: 600px;
+            max-width: 600px;
+            height: 500px;
+            max-height: 500px;
+            margin: 10px;
+        }
+
+        #thumbnails {
+            display: flex;
+            width: 100%;
+        }
+
+        .thumbnail {
+            flex: 1;
+            /* Distribute space evenly */
+            height: auto;
+            /* Maintain aspect ratio */
+            cursor: pointer;
+        }
+
+        #description {
+            margin-top: 10px;
+            font-weight: bold;
+            font-size: 20px;
+        }
+
+        .back a {
+
+            position: fixed;
+            top: 0;
+            left: 2rem;
+            z-index: 1000;
+
+            padding: 10px;
+            color: black;
+            text-decoration: none;
+            font-weight: bold;
+            font-size: 30px;
+
+
+        }
+    </style>
+    <script>
+        function changeImage(src, text) {
+            document.getElementById('main-img').src = src;
+            document.getElementById('description').innerText = text;
+        }
+
+        function setThumbnailWidth() {
+            var mainImg = document.getElementById('main-img');
+            var thumbnails = document.querySelectorAll('.thumbnail');
+            var mainImgWidth = mainImg.offsetWidth;
+            var thumbnailWidth = mainImgWidth / 5;
+
+            thumbnails.forEach(function (thumbnail) {
+                thumbnail.style.width = thumbnailWidth + 'px';
+            });
+        }
+
+        window.onload = setThumbnailWidth;
+        window.onresize = setThumbnailWidth;
+    </script>
+</head>
+
+<body>
+
+    <div class="back"><a href="computer vision.html">返回</a></div>
+
+    <div id="container">
+        <h1>AI识别水果模型</h1>
+        <img id="main-img" src="images/banana.jpg" alt="Main Image">
+        <div id="thumbnails">
+            <img class="thumbnail" src="images/banana.jpg" alt="Thumbnail 1"
+                onclick="changeImage('images/banana.jpg', '这是香蕉')">
+            <img class="thumbnail" src="images/strawberry.jpg" alt="Thumbnail 2"
+                onclick="changeImage('images/strawberry.jpg', '这是草莓')">
+            <img class="thumbnail" src="images/pear.jpg" alt="Thumbnail 3"
+                onclick="changeImage('images/pear.jpg', '这是梨子')">
+            <img class="thumbnail" src="images/orange.jpg" alt="Thumbnail 4"
+                onclick="changeImage('images/orange.jpg', '这是橙子')">
+            <img class="thumbnail" src="images/apple.jpg" alt="Thumbnail 5"
+                onclick="changeImage('images/apple.jpg', '这是苹果')">
+        </div>
+        <div id="description">点击缩略图查看描述</div>
+    </div>
+</body>
+
+</html>

@@ -1,0 +1,302 @@
+*{
+    box-sizing:border-box;
+  }
+  body{
+    margin:0;
+     
+  }
+  .header{
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    padding: 25px 13%;
+    background: transparent;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    z-index: 100;
+
+}
+.navbar a{
+    position: relative;
+    font-size: 16px;
+    color: #fff;
+    margin-right: 30px;
+    text-decoration: none;
+}
+.navbar a::after{
+    content: "";
+    position: absolute;
+    left: 0;
+    width: 100%;
+    height: 2px;
+    background: #fff;
+    bottom: -5px;
+    border-radius: 5px;
+    transform: translateY(10px);
+    opacity: 0;
+    transition: .5s ease;
+}
+.navbar a:hover:after{
+    transform: translateY(0);
+    opacity: 1;
+}
+.search-bar{
+    width: 250px;
+    height: 45px;
+    background-color: transparent;
+    border: 2px solid #fff;
+    border-radius: 6px;
+    display: flex;
+    align-items: center;
+}
+.search-bar input{
+    width: 100%;
+    background-color: transparent;
+    border: none;
+    outline: none;
+    color: #fff;
+    font-size: 16px;
+    padding-left: 10px;
+}
+.search-bar button{
+    width: 40px;
+    height: 100%;
+    background: transparent;
+    outline: none;
+    border: none;
+    color: #fff;
+    cursor: pointer;
+}
+.search-bar input::placeholder{
+    color: #fff;
+}
+.search-bar button i{
+    font-size: 22px;
+}
+  .container{
+    margin: auto;
+    max-width:1200px;
+    padding: 0 20px;
+    justify-content:space-between;
+  }
+  .img{
+    background: url('../images/background.jpg') no-repeat;
+   background-size:cover;
+   background-repeat:no-repeat;
+   padding: 40px 0 100px;
+   background-attachment: fixed;
+  }
+  .header{
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+  }
+  a{
+    color:#00569b;
+    font-weight:700;
+    font-size:15px;
+    font-family:Sans-serif;
+    text-decoration:none;
+    margin-bottom:70px;
+  
+  }
+  .title1{
+    color:#ff8001;
+    font-family:'Quicksand',sans-serif;
+    letter-spacing:2px;
+    font-size:14px;
+  
+  
+  }
+  .title2{
+    color:white;
+    font-family:'Quicksand',sans-serif;
+    font-size:40px;
+    font-weight:bold;
+  }
+  .introduce{
+   color:#ffffffb3;
+   font-family:'Quicksand',sans-serif;
+   line-height: 1.5;
+   font-size:17px;
+  
+  }
+ 
+  .button{
+    padding:12px 17px;
+    border-radius:5px;
+    border:0;
+    font-family:'Quicksand',sans-serif;
+    font-weight:bold;
+    background-color:white;
+    font-size:100%;
+    letter-spacing:0.5px;
+    margin-top:5px;
+    color:#ffffff;
+  }
+  .title3{
+    font-family:'Quicksand',sans-serif;
+    font-size:40px;
+    text-align:center;
+    margin-top:90px;
+  }
+  .icon1-img{
+     background-repeat:no-repeat;
+    background-size:cover;
+    width:120px;
+    height:120px;
+  }
+  
+  .icon-description{
+  display: block;
+  text-align:center;
+  font-family:'Quicksand',sans-serif;
+  color:#000000b3;
+  font-weight:500;
+  font-size:15px;
+  }
+  
+  .icon-list{
+    display:flex;
+    flex-wrap:wrap;
+  }
+  .three-icon{
+    flex:1;
+    padding:30px;
+  }
+  .icon-title{
+    text-shadow: 
+    0 0 5px #fff, /* 基本的白色阴影 */
+    0 0 10px #fff, /* 稍微大一点的白色阴影 */
+    0 0 15px #0073e6, /* 蓝色阴影，创造发光效果 */
+   
+  }
+  .page2{
+    text-align:center;
+  }
+  .page3{
+   background-color:#fbfbfb;
+  
+  }
+  .page3-box{
+    display:flex;
+    flex-wrap:wrap;
+    align-items:center;
+    padding: 20px 0;
+  }
+  .page3-img{
+   max-width:540px;
+  width:100%;
+    
+  }
+  .information{
+  flex:1;
+    padding-left:70px;
+  }
+  button.learn-more{
+    background-color:#d0e0ed;
+    color:white;
+  }
+  .info-title{
+    font-family:'Quicksand',sans-serif;
+    font-size:30px;
+    font-weight:bold;
+  
+  }
+  .info-all{
+    color:#000000b3;
+    margin-bottom:20px;
+    line-height:1.4;
+    font-size:17px;
+  
+  }
+  .get-free{
+     background-color:#292b2c;
+    color:white;
+  }
+  .memberships{
+    display:flex;
+    flex-wrap:wrap;
+  }
+  .member{
+  flex:auto;
+  padding:60px;
+  text-align:center;  
+  font-family:'Quicksand',sans-serif;
+  border-radius:4px;
+  }
+  span{
+    font-size:40px;
+  
+  }
+  .mem-title{
+    font-size:26px;
+    font-weight:bold;
+  }
+  .orange{
+    background-color:#ff8001;
+    color:white;
+  }
+  .page4{
+    padding:80px 0;
+  }
+  .under{
+    background-color:#f5f5f5;
+    padding:10px;
+    display:flex;
+  
+  
+  }
+   .under .container{
+     display:flex;
+     flex-wrap:wrap;
+     justify-content:space-between;
+     width:100%;
+    }
+   
+  .copy{
+   font-family: 'Work Sans', sans-serif;
+  
+  
+  }
+  .facebook{
+    background-image:url("https://i.ibb.co/x6n6DNV/facebook-logo-button.png");
+    background-repeat:no-repeat;
+    background-size:cover;
+    width:30px;
+    height:30px;
+  
+  }
+  .sos-med{
+    display:flex;
+    justify-content:space-between;
+    width:100px;
+  }
+  
+  
+  .twitter{
+     background-image:url("https://i.ibb.co/wzstzsd/twitter.png");
+     background-repeat:no-repeat;
+    background-size:cover;
+    width:30px;
+    height:30px;
+  }
+  .linkedin{
+    background-image:url("https://i.ibb.co/9T8kqqb/linkedin-logo-button.png");
+    background-repeat:no-repeat;
+    background-size:cover;
+    width:30px;
+    height:30px;
+  }
+  
+  @media (max-width: 840px) {
+    .information {
+      padding-left: 0;
+      text-align: center;
+    }
+    .page3-box {
+      justify-content: center;
+    }
+  }

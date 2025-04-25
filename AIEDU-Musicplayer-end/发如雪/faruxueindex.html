@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <link rel="stylesheet" href="index.css" />
+</head>
+
+<body>
+    <header class="header">
+        <nav class="navbar">
+            <a href="/AIEDU-Music-end/index.html">返回音乐列表</a>
+        </nav>
+    </header>
+    <div class="music-content-bg">
+        <div class="music-content">
+            <div class="music-box">
+                <!-- 上部分 -->
+                <article>
+                    <div class="m-img-box">
+                        <div class="m-img-content"></div>
+                    </div>
+                    <div class="m-description-content">
+                        <article>
+                            <p class="m-title">音乐名</p>
+                            <p class="m-author">作者</p>
+                        </article>
+                        <div class="m-btn-box">
+                            <button class="m-previous-btn">
+                                <svg class="icon" aria-hidden="true" style="transform: scale(-1)">
+                                    <use href="#icon-xiayishou"></use>
+                                </svg>
+                            </button>
+                            <button class="m-play-btn">
+                                <svg class="icon" aria-hidden="true">
+                                    <use href="#icon-bofang"></use>
+                                </svg>
+                            </button>
+                            <button class="m-next-btn">
+                                <svg class="icon" aria-hidden="true">
+                                    <use href="#icon-xiayishou"></use>
+                                </svg>
+                            </button>
+                        </div>
+                    </div>
+                </article>
+                <!-- 下部分 -->
+                <section>
+                    <span class="m-current-time">00 : 00</span>
+                    <div class="m-progress-bar">
+                        <div class="m-progress-main">
+                            <span class="m-progress-btn"></span>
+                        </div>
+                        <div class="m-progress-load"></div>
+                    </div>
+                    <span class="m-total-time">00 : 00</span>
+                </section>
+            </div>
+        </div>
+    </div>
+
+    <script src="iconfont.js"></script>
+    <script src="index.js"></script>
+</body>
+
+</html>

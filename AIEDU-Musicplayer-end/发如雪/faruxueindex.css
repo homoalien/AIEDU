@@ -1,0 +1,255 @@
+* {
+    margin: 0;
+    padding: 0;
+}
+
+:root {
+    --color-font: #000000;
+    --color-bg-progress-b: #6b6b6b;
+    --color-bg-progress-l: #a0a0a0;
+    --color-bg-progress-m: #ffffff;
+}
+
+html {
+    font-size: 0.0625rem;
+    color: var(--color-font);
+}
+
+.header{
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    padding: 25px 13%;
+    background: transparent;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    z-index: 100;
+
+}
+.navbar a{
+    position: relative;
+    font-size: 16px;
+    color: #fff;
+    margin-right: 30px;
+    text-decoration: none;
+}
+.music-content-bg {
+    height: 100vh;
+    background-image: linear-gradient(to right, #dc2424 0%, #4a569d 100%);
+}
+
+.music-content {
+    height: 100%;
+    backdrop-filter: blur(5px);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden;
+}
+
+.music-box {
+    flex: none;
+    width: 400rem;
+    height: 200rem;
+    border-radius: 30rem;
+    box-sizing: border-box;
+    background-color: rgb(232, 232, 232, 0.7);
+    backdrop-filter: blur(20px);
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+    padding: 30rem;
+    box-shadow: inset 0px 0px 10px 2px rgb(255, 255, 255, 0.5);
+    user-select: none;
+}
+
+/* music-box 上部分 */
+.music-box>article {
+    width: 100%;
+    height: 100rem;
+    display: flex;
+    justify-content: flex-start;
+}
+
+/* 图片部分 */
+.m-img-box {
+    flex: none;
+    width: 100rem;
+    height: 100rem;
+    border-radius: 20rem;
+    overflow: hidden;
+    box-shadow: 0px 0px 10px 0px rgba(255, 255, 255, 0.25),
+        0px 0px 8px 0px inset rgba(0, 0, 0, 0.05);
+}
+
+.m-img-content {
+    width: 100%;
+    height: 100%;
+    transform: translateY(-100%);
+}
+
+.m-img-content.tran {
+    transition: transform 0.4s linear 0.3s;
+}
+
+.m-img-content>img {
+    display: block;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-radius: 8rem;
+    transform: scale(1);
+}
+
+.m-img-content>img.anim {
+    animation: img-anim 1s linear forwards;
+}
+
+@keyframes img-anim {
+    30% {
+        transform: scale(0.6);
+    }
+
+    70% {
+        transform: scale(0.6);
+    }
+
+    100% {
+        transform: scale(1);
+    }
+}
+
+/* 描述部分 */
+.m-description-content {
+    position: relative;
+    margin-left: 25rem;
+    width: 0;
+    flex: 1;
+}
+
+.m-description-content>article {
+    opacity: 1;
+}
+
+.m-description-content>article.anim {
+    animation: desc-cont-anim 1s ease-in forwards;
+}
+
+@keyframes desc-cont-anim {
+    30% {
+        opacity: 0;
+        transform: var(--transform-translateY);
+    }
+
+    70% {
+        opacity: 0;
+        transform: translateY(0);
+    }
+
+    100% {
+        opacity: 1;
+    }
+}
+
+.m-title {
+    font-size: 18rem;
+    font-weight: 500;
+    height: 30rem;
+    line-height: 30rem;
+}
+
+.m-author {
+    font-size: 15rem;
+    font-weight: 400;
+    color: #2f2f2f;
+}
+
+.m-title,
+.m-author {
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    overflow: hidden;
+}
+
+.m-btn-box {
+    position: absolute;
+    bottom: 0;
+    width: 180rem;
+    display: flex;
+    justify-content: space-between;
+}
+
+.m-btn-box>button {
+    background: none;
+    border: none;
+    outline: none;
+    width: 22rem;
+    height: 22rem;
+}
+
+.icon {
+    width: 100%;
+    height: 100%;
+    vertical-align: middle;
+    fill: var(--color-font);
+    overflow: hidden;
+}
+
+.m-btn-box>button:active>.icon {
+    width: 20rem;
+    height: 20rem;
+}
+
+/* music-box 下部分 */
+.music-box>section {
+    width: 100%;
+    font-size: 16rem;
+    font-weight: 700;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 5rem;
+    box-sizing: border-box;
+}
+
+.m-progress-bar {
+    width: 200rem;
+    height: 6rem;
+    background-color: var(--color-bg-progress-b);
+    border-radius: 3rem;
+    overflow: hidden;
+}
+
+.m-progress-main {
+    float: left;
+    height: 100%;
+    width: 20%;
+    background-color: var(--color-bg-progress-m);
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+}
+
+.m-progress-btn {
+    position: absolute;
+    transform: translateX(50%);
+    width: 12rem;
+    height: 12rem;
+    border-radius: 50%;
+    background-color: var(--color-bg-progress-m);
+    transition: width 0.1s linear, height 0.1s linear;
+}
+
+.m-progress-btn:active {
+    width: 14rem;
+    height: 14rem;
+}
+
+.m-progress-load {
+    height: 100%;
+    width: 50%;
+    background-color: var(--color-bg-progress-l);
+}

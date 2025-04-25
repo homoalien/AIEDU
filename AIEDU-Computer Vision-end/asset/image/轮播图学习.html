@@ -1,0 +1,224 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>无缝轮播</title>
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+      }
+      ul {
+        list-style: none;
+      }
+
+      #wrap {
+        overflow: hidden;
+        position: relative;
+        width: 1226px;
+        height: 580px;
+        margin: 200px auto 0;
+      }
+
+      #wrap .img-list {
+        display: flex;
+        position: relative;
+        left: 0px;
+        width: 100%;
+        height: 100%;
+        transition: 0.5s ease;
+      }
+
+      #wrap .img-list img {
+        width: 100%;
+        cursor: pointer;
+      }
+
+      #wrap a {
+        position: absolute;
+        top: 50%;
+        transform: translate(0, -50%);
+        display: block;
+        width: 40px;
+        height: 70px;
+        background-color: rgba(0, 0, 0, 0.7);
+        color: white;
+        user-select: none;
+        font-size: 30px;
+        text-align: center;
+        line-height: 70px;
+        text-decoration: none;
+      }
+
+      #wrap a.left {
+        left: 0;
+      }
+
+      #wrap a.right {
+        right: 0;
+      }
+
+      .circle-list {
+        display: flex;
+        position: absolute;
+        bottom: 20px;
+        left: 50%;
+        transform: translate(-50%, 0);
+        width: 240px;
+        height: 40px;
+        z-index: 8;
+      }
+      .circle-list > .circle {
+        margin: 0 5px;
+        width: 30px;
+        height: 30px;
+        background-color: #ecf0f1;
+        border-radius: 50%;
+      }
+
+      .circle-list > .circle.active {
+        background-color: #e74c3c;
+      }
+    </style>
+  </head>
+  <body>
+    <div id="wrap">
+      <!-- 图片列表 -->
+      <div class="img-list">
+        <img src="https://s1.ax1x.com/2020/09/26/0irm1P.jpg" />
+        <img src="https://s1.ax1x.com/2020/09/26/0irQ0g.jpg" />
+        <img src="https://s1.ax1x.com/2020/09/26/0ir8ts.jpg" />
+        <img src="https://s1.ax1x.com/2020/10/11/0gbKoV.jpg" />
+        <img src="https://s1.ax1x.com/2020/10/11/0gb7Os.jpg" />
+      </div>
+
+      <!-- 小箭头 -->
+      <div class="arrow">
+        <a href="javascript:;" class="left"><</a>
+        <a href="javascript:;" class="right">></a>
+      </div>
+
+      <!-- 小圆点 -->
+      <ul class="circle-list">
+        <li class="circle active" data-n="0"></li>
+        <li class="circle" data-n="1"></li>
+        <li class="circle" data-n="2"></li>
+        <li class="circle" data-n="3"></li>
+        <li class="circle" data-n="4"></li>
+      </ul>
+    </div>
+    <script>
+      // 获取左右按钮和图片列表
+      let oLeft = document.querySelector(".left");
+      let oRight = document.querySelector(".right");
+      let oImgList = document.querySelector(".img-list");
+
+      // 克隆第一张图片
+      let clonefirstImg = oImgList.firstElementChild.cloneNode();
+      // 将第一张图片添加至图片列表的末尾
+      oImgList.appendChild(clonefirstImg);
+
+      // 图片索引 代表当前是第几张图片  index:0代表第一张图片
+      let index = 0;
+
+      // 设置函数节流锁
+      let lock = true;
+      function handleRightBtn() {
+        if (!lock) return;
+        index++;
+        oImgList.style.left = index * -1226 + "px";
+        // 为什么要加过渡? 因为切换到了最后一张假图时会将过渡去掉
+        oImgList.style.transition = "0.5s ease";
+
+        if (index === 5) {
+          index = 0;
+          setTimeout(() => {
+            oImgList.style.left = 0;
+            // 取消过渡 500毫秒之后切换第一张
+            oImgList.style.transition = "none";
+          }, 500);
+        }
+
+        // 设置小圆点的高亮
+        setCircles();
+        // 关锁
+        lock = false;
+        setTimeout(() => {
+          lock = true;
+        }, 500);
+      }
+
+      // 右按钮的实现
+      oRight.addEventListener("click", handleRightBtn);
+
+      // 左按钮的实现  瞬间切换到假图然后拉到真实最后一张图片
+      oLeft.addEventListener("click", () => {
+        if (!lock) return;
+        index--;
+        if (index === -1) {
+          oImgList.style.left = 5 * -1226 + "px";
+          oImgList.style.transition = "none";
+          index = 4;
+          setTimeout(() => {
+            oImgList.style.left = index * -1226 + "px";
+            oImgList.style.transition = "0.5s ease";
+          }, 0);
+        } else {
+          oImgList.style.left = index * -1226 + "px";
+        }
+
+        // 设置小圆点的高亮
+        setCircles();
+
+        lock = false;
+        setTimeout(() => {
+          lock = true;
+        }, 500);
+      });
+
+      // 获取五个小圆点
+      const circles = document.querySelectorAll(".circle");
+
+      // 小圆点高亮的显示
+      function setCircles() {
+        for (let i = 0; i < circles.length; i++) {
+          if (i === index) {
+            circles[i].classList.add("active");
+          } else {
+            circles[i].classList.remove("active");
+          }
+        }
+      }
+
+      // 小圆点点击切换图片 使用事件代理
+      const oCircle = document.querySelector(".circle-list");
+      oCircle.addEventListener("click", (e) => {
+        // 当我点击小圆点的时候
+        if (e.target.nodeName.toLowerCase() === "li") {
+          // 当前元素的data-n对应得值 和index一一对应
+          const n = Number(e.target.getAttribute("data-n"));
+          index = n;
+          setCircles();
+          oImgList.style.transition = "0.5s ease";
+          oImgList.style.left = index * -1226 + "px";
+        }
+      });
+
+      // 自动轮播
+      let autoplay = setInterval(handleRightBtn, 2000);
+      const oWrap = document.getElementById("wrap");
+      // 移入停止轮播
+      oWrap.addEventListener("mouseenter", () => {
+        clearInterval(autoplay);
+      });
+      // 移出继续轮播
+      oWrap.addEventListener("mouseleave", () => {
+        // 设表先关
+        clearInterval(autoplay);
+        autoplay = setInterval(handleRightBtn, 2000);
+      });
+
+      // https://segmentfault.com/a/1190000018445196
+    </script>
+  </body>
+</html>

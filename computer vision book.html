@@ -1,0 +1,291 @@
+ 
+<html>
+ 
+<head>
+        <title>Moleskine Notebook with jQuery Booklet</title>
+         
+<link href="https://fonts.googleapis.com/css?family=Oswald" rel="stylesheet">
+    
+    
+
+ <link href="https://fonts.googleapis.com/css?family=Roboto+Condensed:300,300i,400,400i,700i" rel="stylesheet">
+ 
+ 
+		<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/1.4.4/jquery.min.js"></script>
+		<script src="AIEDU-Books-end\definition-Blockbook\booklet\jquery.easing.1.3.js" type="text/javascript"></script>
+		<script src="AIEDU-Books-end\definition-Blockbook\booklet\jquery.booklet.1.1.0.min.js" type="text/javascript"></script>
+
+		<link href="AIEDU-Books-end\definition-Blockbook\booklet\jquery.booklet.1.1.0.css" type="text/css" rel="stylesheet" media="screen" />
+		 
+		 
+		 <style>
+         
+              *{
+	margin:0;
+	padding:0;
+}
+body{
+	background:#133647;	
+	color:#444;
+	font-size:12px;
+	color: #333;
+    font-family: 'Oswald', sans-serif;
+}
+ 
+ 
+.booklet           {
+	width:900px;
+	height:607px;
+	position:relative;
+	margin:0 auto 10px;
+	-moz-box-shadow:0px 0px 1px #fff;
+	-webkit-box-shadow:0px 0px 1px #fff;
+	box-shadow:0px 0px 1px #fff;
+	-moz-border-radius:10px;
+	-webkit-border-radius:10px;
+	border-radius:10px;
+}
+.booklet .b-wrap-left  {
+	background:#fff url(AIEDU-Books-end\definition-Blockbook\images\left_bg.jpg) no-repeat top left;
+	-webkit-border-top-left-radius: 10px;
+	-webkit-border-bottom-left-radius: 10px;
+	-moz-border-radius-topleft:10px;
+	-moz-border-radius-bottomleft: 10px;
+	border-top-left-radius: 10px;
+	border-bottom-left-radius: 10px;
+}
+.booklet .b-wrap-right {
+	background:#efefef url(AIEDU-Books-end\definition-Blockbook\images\right_bg.jpg) no-repeat top left;
+	-webkit-border-top-right-radius: 10px;
+	-webkit-border-bottom-right-radius: 10px;
+	-moz-border-radius-topright: 10px;
+	-moz-border-radius-bottomright: 10px;
+	border-top-right-radius: 10px;
+	border-bottom-right-radius: 10px;
+}
+.booklet .b-counter {
+	bottom:10px;
+	position:absolute;
+	display:block;
+	width:90%;
+	height:20px;
+	border-top:1px solid #ddd;
+	color:#222;
+	text-align:center;
+	font-size:12px;
+	padding:5px 0 0;
+	background:transparent;
+	-moz-box-shadow:0px -1px 1px #fff;
+	-webkit-box-shadow:0px -1px 1px #fff;
+	box-shadow:0px -1px 1px #fff;
+	opacity:0.8;
+}
+.book_wrapper{
+	margin:0 auto;
+	padding-top:50px;
+	width:905px;
+	height:540px;
+	position:relative;
+	background:transparent url(AIEDU-Books-end\definition-Blockbook\images\bg.png) no-repeat 9px 27px;
+}
+.book_wrapper h1{
+	color:orange;
+	margin:5px 5px 5px 15px;
+	font-size:24px;
+	background:transparent url(AIEDU-Books-end\definition-Blockbook\images\h1.png) no-repeat bottom left;
+	padding-bottom:7px;
+    text-transform: uppercase;
+    font-weight: normal;
+}
+.book_wrapper p{
+	font-size:15px;
+	margin:5px 5px 5px 15px;
+}
+.book_wrapper a.article,
+.book_wrapper a.demo{
+	background:transparent url(AIEDU-Books-end\definition-Blockbook\images\circle.png) no-repeat 50% 0px;
+	display:block;
+	width:95px;
+	height:41px;
+	text-decoration:none;
+	outline:none;
+	font-size:16px;
+	color:#555;
+	float:left;
+	line-height:41px;
+	padding-left:47px;
+}
+.book_wrapper a.demo{
+	margin-left:50px;
+}
+.book_wrapper a.article:hover,
+.book_wrapper a.demo:hover{
+	background-position:50% -41px;
+	color:#13386a;
+}
+.book_wrapper img{
+	margin:10px 0px 5px 35px;
+	width:300px;
+	padding:4px;
+	border:1px solid #ddd;
+	-moz-box-shadow:1px 1px 1px #fff;
+	-webkit-box-shadow:1px 1px 1px #fff;
+	box-shadow:1px 1px 1px #fff;
+}
+.booklet .b-wrap-right img{
+	border:1px solid #E6E3C2;
+}
+a#next_page_button,
+a#prev_page_button{
+	display:none;
+	position:absolute;
+	width:41px;
+	height:40px;
+	cursor:pointer;
+	margin-top:-20px;
+	top:50%;
+	background:transparent url(AIEDU-Books-end\definition-Blockbook\images\buttons.png) no-repeat 0px -40px;
+}
+a#prev_page_button{
+	left:-30px;
+}
+a#next_page_button{
+	right:-30px;
+	background-position:-41px -40px;
+}
+a#next_page_button:hover{
+	background-position:-41px 0px;
+}
+a#prev_page_button:hover{
+	background-position:0px 0px;
+}
+ 
+    .back{
+	  
+		position: fixed; 
+  top: 0; 
+  left: 2rem; 
+  z-index: 1000; 
+  
+  padding: 10px; 
+  color: black; 
+  text-decoration: none; 
+  font-weight: bold; 
+  font-size: 15px; 
+
+	}
+    
+         </style>
+		 
+    </head>
+    <body>
+		<div class="back"><h1><a href="computer vision.html" style="color: aliceblue;text-decoration: none;">返回</h1></div></a>
+    <br><br><br><br><br>
+		 
+		<div class="book_wrapper">
+			<a id="next_page_button"></a>
+			<a id="prev_page_button"></a>
+			 
+			<div id="mybook" style="display:none;">
+				<div class="b-load">
+					<div>
+						<img src="AIEDU-Books-end\definition-Blockbook\images\1.png" alt=""/>
+						<h1>计算机视觉</h1>
+						<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+							回顾人工智能的一般定义:寻找输入和输出的对应关系
+						给定输入x和输出y，寻找合适的函数f(·)使得y=f(x)</p>
+						
+					</div>
+					<div>
+						
+						<h1>让计算机理解图像</h1>
+						<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+							计算机视觉，就是处理输入信号与/或输出信号是图像的问题。
+							广义上说，计算机图形学也属于这一范畴;但计算机视觉更偏向于输入信号为图像，
+							而计算机图形学更偏向于输出信号为图像。</p>
+						
+					</div>
+					<div>
+						<img src="AIEDU-Books-end\definition-Blockbook\images\2.png" alt="" />
+						<h1>从图像中获取的语义信息</h1>
+						<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+							回到定义:给定输入x和输出y，寻找合适的函数f(·)使得y=f(x)
+							·这就意味着，当x是图像时，y可以是各种语义信息</p>
+						
+					</div>
+					<div>
+						
+						<h1>示例</h1>
+						<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+							以上图为例，计算机视觉算法需要:
+							识别图中的基本物体即:场景理解、物体检测
+							将图像切分为基本物体的单元即:图像分割、实例分割
+							对重要物体的细节进行解析，如:人体姿态估计、人脸识别，等
+							完成其他任务如:显著性分析、情感分析等。</p>
+						
+					</div>
+					<div>
+						<img src="AIEDU-Books-end\definition-Blockbook\images\5.png" alt="" />
+						<h1>图像的延拓</h1>
+						<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+							两种不同的三维图像形态
+							·视频数据:二维空间和一维时间
+							·医学影像:三维空间
+							第三维度的采样和理解方法不同。主要体现在时间的有序性和时空的异质性。</p>
+						
+					</div>
+					<div>
+						<img src="AIEDU-Books-end\definition-Blockbook\images\6.png" alt="" />
+						<h1>视频和医学影像</h1>
+						<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+							与三维物体表示方法对比
+							·与三维物体的体素表示法类似。一般不存在视频和医学影像稀疏表示方法。</p>
+						<a href="" class="article">ARTICLE</a>
+						<a href="" class="demo">DEMO</a>
+					</div>
+					
+				</div>
+			</div>
+		</div>
+        
+        <script type="text/javascript">
+			$(function() {
+				var $mybook 		= $('#mybook');
+				var $bttn_next		= $('#next_page_button');
+				var $bttn_prev		= $('#prev_page_button');
+				var $loading		= $('#loading');
+				var $mybook_images	= $mybook.find('img');
+				var cnt_images		= $mybook_images.length;
+				var loaded			= 0;
+				 
+				$mybook_images.each(function(){
+					var $img 	= $(this);
+					var source	= $img.attr('src');
+					$('<img/>').load(function(){
+						++loaded;
+						if(loaded == cnt_images){
+							$loading.hide();
+							$bttn_next.show();
+							$bttn_prev.show();
+							$mybook.show().booklet({
+								name:               null,                            //  
+								width:              800,                             //  
+								height:             500,                             //   
+								speed:              600,                             //  
+								direction:          'LTR',                           //  
+								                           //  
+								next:               $bttn_next,          			//  
+								prev:               $bttn_prev,          			//  
+								                       
+							});
+							Cufon.refresh();
+						}
+					}).attr('src',source);
+				});
+				
+			});
+        </script>
+ 
+    </body>
+ 
+</html>

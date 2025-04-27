@@ -1,117 +1,251 @@
 <!DOCTYPE html>
-<html lang="zh">
-
+<html lang="zh-CN">
 <head>
     <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>contact</title>
-    <!-- custom css file link -->
-    <link rel="stylesheet" href="css/style.css">
+    <title>植物花卉识别</title>
     <style>
         body {
-            background-color: #e4edf6;
-        }
-
-        #container {
+            font-family: Arial, sans-serif;
+            background-color: aliceblue;
             display: flex;
-            flex-direction: column;
+            justify-content: center;
             align-items: center;
-            max-width: 700px;
-            margin: auto;
+            min-height: 100vh;
+            margin: 0;
+            padding: 20px;
+        }
+
+        .top-bar {
+          width: 100%; 
+          height: 70px; 
+          background-color: #13214c;
+          
+  		position: fixed; 
+          top: 0; 
+          left: 0; 
+         
+  		
+        }
+  	  
+        .top-bar a {
+            
+            text-decoration: none; 
+            color: white; 
+            font-weight: bold; 
+            font-size: 30px; 
             position: absolute;
-            padding-top: 5%;
-            padding-left: 30%;
+            left:3%;
+            top:20%;
         }
 
-        #main-img {
-            width: 80%;
-            height: auto;
-            width: 600px;
-            max-width: 600px;
-            height: 500px;
-            max-height: 500px;
-            margin: 10px;
-        }
-
-        #thumbnails {
-            display: flex;
+        /* 添加白色边框的主容器 */
+        .main-container {
+            background-color: white;
+            border-radius: 10px;
+            box-shadow: 0 0 15px rgba(0, 0, 0, 0.1);
             width: 100%;
+            max-width: 800px;
+            padding: 30px;
+            border: 2px solid #e0e0e0; /* 白色边框 */
         }
-
-        .thumbnail {
-            flex: 1;
-            /* Distribute space evenly */
-            height: auto;
-            /* Maintain aspect ratio */
+        
+        h1 {
+            color: #333;
+            text-align: center;
+            margin-bottom: 20px;
+        }
+        
+        .upload-area {
+            border: 2px dashed #ccc;
+            padding: 40px;
+            text-align: center;
             cursor: pointer;
+            border-radius: 8px;
+            margin-bottom: 20px;
+            transition: all 0.3s;
+        }
+        
+        .upload-area:hover {
+            border-color: #4CAF50;
+            background-color: #f9f9f9;
+        }
+        
+        #preview {
+            max-width: 100%;
+            max-height: 300px;
+            display: none;
+            margin: 0 auto;
+            border-radius: 5px;
+        }
+        
+        #result {
+            margin-top: 20px;
+            padding: 20px;
+            border: 1px solid #e0e0e0;
+            border-radius: 8px;
+            min-height: 100px;
+            background-color: #fafafa;
+        }
+        
+        button {
+            padding: 12px 25px;
+            background-color: #6aaed0;
+            color: white;
+            border: none;
+            border-radius: 6px;
+            cursor: pointer;
+            font-size: 16px;
+            display: block;
+            margin: 0 auto;
+            transition: background-color 0.3s;
+        }
+        
+        button:hover {
+            background-color: #317aa5;
+        }
+        
+        .file-input {
+            display: none;
         }
 
-        #description {
-            margin-top: 10px;
-            font-weight: bold;
-            font-size: 20px;
-        }
-
-        .back a {
-
-            position: fixed;
-            top: 0;
-            left: 2rem;
-            z-index: 1000;
-
-            padding: 10px;
-            color: black;
-            text-decoration: none;
-            font-weight: bold;
-            font-size: 30px;
-
-
-        }
     </style>
-    <script>
-        function changeImage(src, text) {
-            document.getElementById('main-img').src = src;
-            document.getElementById('description').innerText = text;
-        }
-
-        function setThumbnailWidth() {
-            var mainImg = document.getElementById('main-img');
-            var thumbnails = document.querySelectorAll('.thumbnail');
-            var mainImgWidth = mainImg.offsetWidth;
-            var thumbnailWidth = mainImgWidth / 5;
-
-            thumbnails.forEach(function (thumbnail) {
-                thumbnail.style.width = thumbnailWidth + 'px';
-            });
-        }
-
-        window.onload = setThumbnailWidth;
-        window.onresize = setThumbnailWidth;
-    </script>
 </head>
-
 <body>
-
-    <div class="back"><a href="computer vision.html">返回</a></div>
-
-    <div id="container">
-        <h1>AI识别水果模型</h1>
-        <img id="main-img" src="images/banana.jpg" alt="Main Image">
-        <div id="thumbnails">
-            <img class="thumbnail" src="images/banana.jpg" alt="Thumbnail 1"
-                onclick="changeImage('images/banana.jpg', '这是香蕉')">
-            <img class="thumbnail" src="images/strawberry.jpg" alt="Thumbnail 2"
-                onclick="changeImage('images/strawberry.jpg', '这是草莓')">
-            <img class="thumbnail" src="images/pear.jpg" alt="Thumbnail 3"
-                onclick="changeImage('images/pear.jpg', '这是梨子')">
-            <img class="thumbnail" src="images/orange.jpg" alt="Thumbnail 4"
-                onclick="changeImage('images/orange.jpg', '这是橙子')">
-            <img class="thumbnail" src="images/apple.jpg" alt="Thumbnail 5"
-                onclick="changeImage('images/apple.jpg', '这是苹果')">
+    <div class="top-bar">
+	      <a href="computer vision.html">返回</a>
+	</div>
+    <!-- 添加白色边框的主容器 -->
+    <div class="main-container">
+        <h1>植物花卉识别</h1>
+        
+        <div class="upload-area" id="uploadArea">
+            <p>点击或拖拽图片到此处上传</p>
+            <input type="file" id="fileInput" class="file-input" accept="image/*">
+            <img id="preview" alt="预览图">
         </div>
-        <div id="description">点击缩略图查看描述</div>
+        
+        <button id="recognizeBtn">识别植物</button>
+        
+        <div id="result">
+            <h3>识别结果</h3>
+            <p>识别结果将显示在这里...</p>
+        </div>
     </div>
-</body>
 
+    <script>
+        // 获取DOM元素
+        const uploadArea = document.getElementById('uploadArea');
+        const fileInput = document.getElementById('fileInput');
+        const preview = document.getElementById('preview');
+        const recognizeBtn = document.getElementById('recognizeBtn');
+        const resultDiv = document.getElementById('result');
+
+        // 点击上传区域触发文件选择
+        uploadArea.addEventListener('click', () => {
+            fileInput.click();
+        });
+
+        // 处理文件选择
+        fileInput.addEventListener('change', (e) => {
+            const file = e.target.files[0];
+            if (file) {
+                const reader = new FileReader();
+                reader.onload = (event) => {
+                    preview.src = event.target.result;
+                    preview.style.display = 'block';
+                    uploadArea.querySelector('p').textContent = '已选择图片，点击可更换';
+                };
+                reader.readAsDataURL(file);
+            }
+        });
+
+        // 拖拽功能
+        uploadArea.addEventListener('dragover', (e) => {
+            e.preventDefault();
+            uploadArea.style.borderColor = '#4CAF50';
+            uploadArea.style.backgroundColor = '#f0fff0';
+        });
+
+        uploadArea.addEventListener('dragleave', () => {
+            uploadArea.style.borderColor = '#ccc';
+            uploadArea.style.backgroundColor = '#f9f9f9';
+        });
+
+        uploadArea.addEventListener('drop', (e) => {
+            e.preventDefault();
+            uploadArea.style.borderColor = '#ccc';
+            uploadArea.style.backgroundColor = '#f9f9f9';
+            
+            const file = e.dataTransfer.files[0];
+            if (file && file.type.match('image.*')) {
+                fileInput.files = e.dataTransfer.files;
+                const reader = new FileReader();
+                reader.onload = (event) => {
+                    preview.src = event.target.result;
+                    preview.style.display = 'block';
+                    uploadArea.querySelector('p').textContent = '已选择图片，点击可更换';
+                };
+                reader.readAsDataURL(file);
+            }
+        });
+
+        // 识别按钮点击事件
+        recognizeBtn.addEventListener('click', async () => {
+            const file = fileInput.files[0];
+            if (!file) {
+                alert('请先选择一张图片');
+                return;
+            }
+
+            resultDiv.innerHTML = '<h3>识别结果</h3><p>识别中，请稍候...</p>';
+            
+            try {
+                // 这里应该是调用API的代码
+                // 模拟API调用延迟
+                setTimeout(() => {
+                    // 模拟返回结果
+                    const mockResult = {
+                        name: "玫瑰",
+                        confidence: "92%",
+                        description: "玫瑰是蔷薇科蔷薇属植物，象征着爱情与美丽。",
+                        similar: [
+                            {name: "月季", confidence: "85%"},
+                            {name: "蔷薇", confidence: "78%"}
+                        ]
+                    };
+                    
+                    // 显示结果
+                    displayResult(mockResult);
+                }, 1500);
+            } catch (error) {
+                console.error('识别失败:', error);
+                resultDiv.innerHTML = '<h3>识别结果</h3><p style="color:red;">识别失败: ' + error.message + '</p>';
+            }
+        });
+
+        // 显示识别结果
+        function displayResult(data) {
+            let html = '<h3>识别结果</h3>';
+            
+            if (data && data.name) {
+                html += `<p><strong>植物名称:</strong> ${data.name || '未知'}</p>`;
+                html += `<p><strong>置信度:</strong> ${data.confidence || '未知'}</p>`;
+                html += `<p><strong>描述:</strong> ${data.description || '无描述信息'}</p>`;
+                
+                if (data.similar && data.similar.length > 0) {
+                    html += '<h4>相似植物:</h4><ul>';
+                    data.similar.forEach(item => {
+                        html += `<li>${item.name} (${item.confidence})</li>`;
+                    });
+                    html += '</ul>';
+                }
+            } else {
+                html += '<p>未能识别出植物，请尝试其他图片。</p>';
+            }
+            
+            resultDiv.innerHTML = html;
+        }
+    </script>
+</body>
 </html>
